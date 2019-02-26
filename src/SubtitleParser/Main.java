@@ -1,9 +1,6 @@
 package SubtitleParser;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class Main {
 
@@ -41,5 +38,12 @@ public class Main {
             }
 
             System.out.println(parsedFile);
+
+            try (PrintWriter out = new PrintWriter("/Users/zipingliu/Documents/outputCaptions.txt")) {
+                out.println(parsedFile);
+            } catch (FileNotFoundException ex)
+            {
+                System.out.println("Cannot save output file");
+            }
         }
     }
